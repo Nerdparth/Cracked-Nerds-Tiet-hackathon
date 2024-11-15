@@ -33,6 +33,8 @@ def sensor_alert(request, payload: FireSensorDataSchema):
         to=os.getenv('AUTHORITY_PHONE_NUMBER')
     )
 
+    print(f"fire detected at {location}")
+
     return "Alert sent to authorities."
 
 # Endpoint for manual fire reports
