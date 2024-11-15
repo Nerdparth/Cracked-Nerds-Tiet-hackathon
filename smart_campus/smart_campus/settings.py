@@ -92,15 +92,12 @@ WSGI_APPLICATION = "smart_campus.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "railway",
-        "USER": "postgres",
-        "PASSWORD": "erfZzHtfUffTIYDgHbCIlMjkRmOrNshF",
-        "HOST": "junction.proxy.rlwy.net",
-        "PORT": "54456",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # Database engine
+        'NAME': BASE_DIR / 'db.sqlite3',         # Path to the database file
     }
 }
+
 
 
 # Password validation
