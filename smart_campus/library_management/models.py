@@ -6,7 +6,11 @@ class books_to_be_bought(models.Model):
     author = models.CharField(max_length=200)
     quantity = models.IntegerField(default=1)
     price = models.IntegerField(default=0)
-    status = models.CharField(max_length=40, choices=[("approved", "approved"), ("pending", "pending")], default="pending")
+    status = models.CharField(
+        max_length=40,
+        choices=[("approved", "approved"), ("pending", "pending")],
+        default="pending",
+    )
     remarks = models.CharField(max_length=2000, default="nothing")
 
 

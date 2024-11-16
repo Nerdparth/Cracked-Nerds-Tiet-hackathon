@@ -10,10 +10,10 @@ meeting = NinjaAPI(urls_namespace="meeting_api")
 def set_meeting_url(request, payload: MeetingURLSchema):
     """Store or update the meeting URL."""
     meeting_instance, created = Meeting.objects.update_or_create(
-        id=1,  # Ensure only one record exists
+        id=1, 
         defaults={"url": payload.url},
     )
-    
+
     if created:
         return "Meeting URL saved successfully."
     else:

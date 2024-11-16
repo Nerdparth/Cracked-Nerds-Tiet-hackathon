@@ -1,11 +1,14 @@
 from ninja import Schema
 
+
 class GarbageSensorRequestSchema(Schema):
-    sensor_id: int  # Only the sensor ID will be sent
+    sensor_id: int  
+
 
 class UpdateStatusSchema(Schema):
     sensor_id: int
-    status: str  # "Normal" or "Overflowed"
+    status: str  
+
 
 class GarbageSensorDataSchema(Schema):
     sensor_id: int

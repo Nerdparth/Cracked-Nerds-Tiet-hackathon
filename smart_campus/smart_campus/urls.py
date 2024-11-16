@@ -11,22 +11,16 @@ from meeting.api import meeting
 from announcements.api import announcements
 from schedule.api import schedule
 
-# Set unique urls_namespace for each API instance
-# app.urls_namespace = "library_api"  # Ensure unique namespace for library_management
-# api = NinjaAPI(urls_namespace="weather_api")  # Unique namespace for weather_report
-# api.add_router("/weather", )
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", app.urls),  # Separate namespace for library API
-    # path("api/", api.urls),  # Separate namespace for weather API
+    path("api/", app.urls),  
     path("weather-api/", router.urls),
     path("parking-management/", app2.urls),
     path("events-api/", app3.urls),
     path("", landing, name="index"),
-    path("fire-api/",fire.urls),
-    path("garbage-api/",garbage.urls),
-    path("meeting-api/",meeting.urls),
-    path("announcements-api/",announcements.urls),
-    path("schedule-api/",schedule.urls)
+    path("fire-api/", fire.urls),
+    path("garbage-api/", garbage.urls),
+    path("meeting-api/", meeting.urls),
+    path("announcements-api/", announcements.urls),
+    path("schedule-api/", schedule.urls),
 ]

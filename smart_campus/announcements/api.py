@@ -13,7 +13,7 @@ def set_announcement(request, payload: AnnouncementSchema):
         id=1,  # Ensure only one record exists
         defaults={"content": payload.content},
     )
-    
+
     if created:
         return "Announcement created successfully."
     else:

@@ -1,5 +1,10 @@
 from ninja import NinjaAPI
-from .schemas import AddEventSchema, DeleteEventSchema, RegisterEventSchema, EventsCountSchema
+from .schemas import (
+    AddEventSchema,
+    DeleteEventSchema,
+    RegisterEventSchema,
+    EventsCountSchema,
+)
 from .models import Events, Attendees
 from django.http import JsonResponse
 from django.utils import timezone
@@ -103,16 +108,19 @@ def register_for_event(request, details: RegisterEventSchema):
     )
 
     send_email_data = {
-  "email" : details.email,
-  "name" : details.name,
-  "url" : "#",
-  "template" : "registeration" ,
-  "subject" : "Thanks for registering",
-  "event_name" : details.event_name,
-  "date" : "16 Nov, 2024"
-}
+        "email": details.email,
+        "name": details.name,
+        "url": "#",
+        "template": "registeration",
+        "subject": "Thanks for registering",
+        "event_name": details.event_name,
+        "date": "16 Nov, 2024",
+    }
 
-    send_email = httpx.post("https://0a8d-117-203-246-41.ngrok-free.app/api/process-data/", json=send_email_data)
+    send_email = httpx.post(
+        "https://0a8d-117-203-246-41.ngrok-free.app/api/process-data/",
+        json=send_email_data,
+    )
 
     return JsonResponse({"message": "Registered for the event successfully"})
 
@@ -132,8 +140,11 @@ def get_all_attendees(request, event_name: str):
         )
     return data
 
-@app3.get("/events-count", response= EventsCountSchema)
+
+@app3.get("/events-count", response=EventsCountSchema)
 def get_events_count(request):
     total_events = Events.objects.all().count()
     upcoming_events = Events.objects.filter(datetime__gt=timezone.now()).count()
-    return JsonResponse({"event_count" : total_events, "upcoming_events_count" : upcoming_events})
+    return JsonResponse(
+        {"event_count": total_events, "upcoming_events_count": upcoming_events}
+    )

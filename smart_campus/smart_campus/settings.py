@@ -16,10 +16,10 @@ import os
 
 load_dotenv()
 
-TWILIO_ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
-TWILIO_AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
-TWILIO_PHONE_NUMBER = os.getenv('TWILIO_PHONE_NUMBER')
-AUTHORITY_PHONE_NUMBER = os.getenv('AUTHORITY_PHONE_NUMBER')
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
+AUTHORITY_PHONE_NUMBER = os.getenv("AUTHORITY_PHONE_NUMBER")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +43,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
     "https://tiet-hackathon.vercel.app",  # Frontend URL
-    "http://localhost:3000",     # For local development (if applicable)
+    "http://localhost:3000",  # For local development (if applicable)
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -67,11 +67,10 @@ INSTALLED_APPS = [
     "garbage",
     "meeting",
     "announcements",
-    "schedule"
+    "schedule",
 ]
 
 MIDDLEWARE = [
- 
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
