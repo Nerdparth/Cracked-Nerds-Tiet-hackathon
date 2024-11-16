@@ -4,7 +4,7 @@ from .models import Events, Attendees
 from django.http import JsonResponse
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
-
+import httpx
 
 app3 = NinjaAPI(urls_namespace="event_management")
 
@@ -101,6 +101,18 @@ def register_for_event(request, details: RegisterEventSchema):
         email=details.email,
         semester=details.semester,
     )
+
+    send_email_data = {
+  "email" : details.email,
+  "name" : details.name,
+  "url" : "#",
+  "template" : "registeration" ,
+  "subject" : "Thanks for registering",
+  "event_name" : details.event_name,
+  "date" : "16 Nov, 2024"
+}
+
+    send_email = httpx.post("https://0a8d-117-203-246-41.ngrok-free.app/api/process-data/", json=send_email_data)
 
     return JsonResponse({"message": "Registered for the event successfully"})
 
